@@ -107,14 +107,12 @@
 
         .font-list-container {
             max-height: 300px; /* Set the desired height for the scrollable container */
-            overflow: auto;
+            overflow-y: auto;
         }
 
         .font-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
+            list-style: none;
+            padding: 0;
         }
 
         .font-item {
@@ -152,34 +150,25 @@
 </head>
 <body>
     <div class="font-list-container">
-        <div class="font-list">
+        <ul class="font-list">
             <!-- Add more font items as needed -->
-            <div class="font-item">
+            <li class="font-item">
                 <p class="font-name" style="font-family: 'Arial';">Arial</p>
                 <div class="download-icon" onclick="downloadFont('Arial.ttf')">
                     <span class="tooltip">Download</span>
                 </div>
-            </div>
+            </li>
 
-            <div class="font-item">
+            <li class="font-item">
                 <p class="font-name" style="font-family: 'ArtyTimes';">ArtyTimes</p>
                 <div class="download-icon" onclick="downloadFont('ArtyTimes.ttf')">
                     <span class="tooltip">Download</span>
                 </div>
-            </div>
+            </li>
 
             <!-- Add more font items as needed -->
 
-        </div>
+        </ul>
     </div>
 
-    <script>
-        function downloadFont(fontFileName) {
-            const downloadLink = document.createElement('a');
-            downloadLink.href = `https://freddiethepebble.github.io/These-Fonts-Suck/${fontFileName}`;
-            downloadLink.download = fontFileName;
-            downloadLink.click();
-        }
-    </script>
-</body>
-</html>
+    <script
