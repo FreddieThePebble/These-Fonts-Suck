@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>These Fonts Suck</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .font-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .font-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .download-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #3498db;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        .download-icon:hover .tooltip {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="font-list">
+        <!-- Font 1 -->
+        <div class="font-item">
+            <p>ComicNeue.ttf</p>
+            <div class="download-icon" onclick="downloadFont('ComicNeue.ttf')">
+                <span class="tooltip">Download</span>
+            </div>
+        </div>
+
+        <!-- Font 2 -->
+        <div class="font-item">
+            <p>Workbench.ttf</p>
+            <div class="download-icon" onclick="downloadFont('Workbench.ttf')">
+                <span class="tooltip">Download</span>
+            </div>
+        </div>
+
+        <!-- Add more fonts as needed -->
+
+    </div>
+
+    <script>
+        function downloadFont(fontFileName) {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = `https://freddiethepebble.github.io/These-Fonts-Suck/${fontFileName}`;
+            downloadLink.download = fontFileName;
+            downloadLink.click();
+        }
+    </script>
+</body>
+</html>
