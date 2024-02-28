@@ -1,189 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<script>
+    function downloadFont(fontFileName) {
+        const downloadLink = document.createElement('a');
+        downloadLink.href = `https://raw.githubusercontent.com/FreddieThePebble/These-Fonts-Suck/main/fonts/${fontFileName}`;
+        downloadLink.download = fontFileName;
+        downloadLink.click();
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>These Fonts Suck</title>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/FreddieThePebble/These-Fonts-Suck/main/These%20Fonts%20Suck%20Logo.png">
-    <style>
-        @font-face {
-            font-family: 'Arial';
-            src: url('Arial.ttf') format('truetype');
-        }
+    document.addEventListener("DOMContentLoaded", function () {
+        const fontNames = [
+            'Arial.ttf', 'ArtyTimes.ttf', 'Bleeding Cowboys.ttf', 'Brush Script.ttf',
+            'Claire\'s Handwriting.ttf', 'Comic Sans.ttf', 'ComicNeue.ttf', 'CourierPrime.ttf',
+            'Curlz.ttf', 'Interstellar Log.ttf', 'Meccano CmInkb.ttf', 'Neuland.ttf',
+            'Papyrus.ttf', 'Poster Slab.ttf', 'Souvenir.ttf', 'Trajan.ttf', 'Workbench.ttf',
+            'ecofont.ttf', 'helvetica.ttf'
+        ];
 
-        @font-face {
-            font-family: 'ArtyTimes';
-            src: url('ArtyTimes.ttf') format('truetype');
-        }
+        const fontList = document.querySelector('.font-list');
 
-        @font-face {
-            font-family: 'BleedingCowboys';
-            src: url('Bleeding Cowboys.ttf') format('truetype');
-        }
+        fontNames.forEach(fontName => {
+            const li = document.createElement('li');
+            li.className = 'font-item';
 
-        @font-face {
-            font-family: 'BrushScript';
-            src: url('Brush Script.ttf') format('truetype');
-        }
+            const downloadIcon = document.createElement('div');
+            downloadIcon.className = 'download-icon';
+            downloadIcon.onclick = () => downloadFont(fontName);
 
-        @font-face {
-            font-family: 'ClairesHandwriting';
-            src: url('Claire\'s Handwriting.ttf') format('truetype');
-        }
+            const tooltip = document.createElement('span');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = 'Download';
 
-        @font-face {
-            font-family: 'ComicSans';
-            src: url('Comic Sans.ttf') format('truetype');
-        }
+            downloadIcon.appendChild(tooltip);
 
-        @font-face {
-            font-family: 'ComicNeue';
-            src: url('ComicNeue.ttf') format('truetype');
-        }
+            const fontParagraph = document.createElement('p');
+            fontParagraph.className = 'font-name';
+            fontParagraph.style.fontFamily = `'${fontName.replace('.ttf', '')}'`;
+            fontParagraph.textContent = fontName.replace('.ttf', '');
 
-        @font-face {
-            font-family: 'CourierPrime';
-            src: url('CourierPrime.ttf') format('truetype');
-        }
+            li.appendChild(downloadIcon);
+            li.appendChild(fontParagraph);
 
-        @font-face {
-            font-family: 'Curlz';
-            src: url('Curlz.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'InterstellarLog';
-            src: url('Interstellar Log.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'MeccanoCmInkb';
-            src: url('Meccano CmInkb.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Neuland';
-            src: url('Neuland.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Papyrus';
-            src: url('Papyrus.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'PosterSlab';
-            src: url('Poster Slab.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Souvenir';
-            src: url('Souvenir.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Trajan';
-            src: url('Trajan.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Workbench';
-            src: url('Workbench.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Ecofont';
-            src: url('ecofont.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Helvetica';
-            src: url('helvetica.ttf') format('truetype');
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        .font-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 20px;
-            padding: 0;
-            list-style: none;
-        }
-
-        .font-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .font-name {
-            margin-top: 10px;
-            font-family: inherit;
-        }
-
-        .download-icon {
-            width: 40px;
-            height: 40px;
-            background-image: url('https://raw.githubusercontent.com/FreddieThePebble/These-Fonts-Suck/main/Download%20Icon.jpeg');
-            background-size: cover;
-            cursor: pointer;
-        }
-
-        .tooltip {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            color: #fff;
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 12px;
-        }
-
-        .font-item:hover .tooltip {
-            display: inline-block;
-        }
-    </style>
-</head>
-
-<body>
-    <ul class="font-list">
-        <li class="font-item">
-            <div class="download-icon" onclick="downloadFont('Arial.ttf')">
-                <span class="tooltip">Download</span>
-            </div>
-            <p class="font-name" style="font-family: 'Arial';">Arial</p>
-        </li>
-
-        <li class="font-item">
-            <div class="download-icon" onclick="downloadFont('ArtyTimes.ttf')">
-                <span class="tooltip">Download</span>
-            </div>
-            <p class="font-name" style="font-family: 'ArtyTimes';">ArtyTimes</p>
-        </li>
-
-        <li class="font-item">
-            <div class="download-icon" onclick="downloadFont('Bleeding Cowboys.ttf')">
-                <span class="tooltip">Download</span>
-            </div>
-            <p class="font-name" style="font-family: 'BleedingCowboys';">Bleeding Cowboys</p>
-        </li>
-
-        <!-- Add similar entries for other fonts -->
-
-    </ul>
-
-    <script>
-        function downloadFont(fontFileName) {
-            const downloadLink = document.createElement('a');
-            downloadLink.href = `https://raw.githubusercontent.com/FreddieThePebble/These-Fonts-Suck/main/fonts/${fontFileName}`;
-            downloadLink.download = fontFileName;
-            downloadLink.click();
-        }
-    </script>
-</body>
-</html>
+            fontList.appendChild(li);
+        });
+    });
+</script>
