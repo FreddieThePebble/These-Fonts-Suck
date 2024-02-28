@@ -106,7 +106,7 @@
         }
 
         .font-list-container {
-            max-height: 300px; /* Set the desired height for the scrollable container */
+            max-height: 300px;
             overflow-y: auto;
         }
 
@@ -151,7 +151,6 @@
 <body>
     <div class="font-list-container">
         <ul class="font-list">
-            <!-- Add more font items as needed -->
             <li class="font-item">
                 <p class="font-name" style="font-family: 'Arial';">Arial</p>
                 <div class="download-icon" onclick="downloadFont('Arial.ttf')">
@@ -171,4 +170,13 @@
         </ul>
     </div>
 
-    <script
+    <script>
+        function downloadFont(fontFileName) {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = `https://freddiethepebble.github.io/These-Fonts-Suck/${fontFileName}`;
+            downloadLink.download = fontFileName;
+            downloadLink.click();
+        }
+    </script>
+</body>
+</html>
