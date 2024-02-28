@@ -108,26 +108,27 @@
         }
 
         .font-list {
-            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
             padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            list-style: none;
         }
 
         .font-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            margin: 10px;
         }
 
         .font-name {
-            margin-right: 10px;
+            margin-top: 10px;
+            font-family: inherit;
         }
 
         .download-icon {
-            width: 20px;
-            height: 20px;
+            width: 40px;
+            height: 40px;
             background-image: url('https://raw.githubusercontent.com/FreddieThePebble/These-Fonts-Suck/main/Download%20Icon.jpeg');
             background-size: cover;
             cursor: pointer;
@@ -151,18 +152,21 @@
 <body>
     <ul class="font-list">
         <li class="font-item">
-            <p class="font-name" style="font-family: 'Arial';">Arial</p>
             <div class="download-icon" onclick="downloadFont('Arial.ttf')">
                 <span class="tooltip">Download</span>
             </div>
+            <p class="font-name" style="font-family: 'Arial';">Arial</p>
         </li>
 
         <li class="font-item">
-            <p class="font-name" style="font-family: 'ArtyTimes';">ArtyTimes</p>
             <div class="download-icon" onclick="downloadFont('ArtyTimes.ttf')">
                 <span class="tooltip">Download</span>
             </div>
+            <p class="font-name" style="font-family: 'ArtyTimes';">ArtyTimes</p>
         </li>
+
+        <!-- Add more font items as needed -->
+
     </ul>
 
     <script>
