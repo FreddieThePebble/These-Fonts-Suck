@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>These Fonts Suck</title>
     <style>
+        @font-face {
+            font-family: 'ComicNeue';
+            src: url('ComicNeue.ttf') format('truetype'); /* Change 'ComicNeue.ttf' to the actual font file name */
+        }
+
+        @font-face {
+            font-family: 'Workbench';
+            src: url('Workbench.ttf') format('truetype'); /* Change 'Workbench.ttf' to the actual font file name */
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -23,13 +33,13 @@
         }
 
         .font-name {
-            font-family: inherit; /* Use the same font as the body */
+            font-family: inherit;
             margin-right: 10px;
         }
 
         .download-icon {
-            width: 20px; /* Set the desired width */
-            height: 20px; /* Set the desired height */
+            width: 20px;
+            height: 20px;
             background-image: url('https://raw.githubusercontent.com/FreddieThePebble/These-Fonts-Suck/main/Download%20Icon.jpeg');
             background-size: cover;
             cursor: pointer;
@@ -54,7 +64,7 @@
     <div class="font-list">
         <!-- Font 1 -->
         <div class="font-item">
-            <p class="font-name">ComicNeue</p>
+            <p class="font-name" style="font-family: 'ComicNeue';">ComicNeue</p>
             <div class="download-icon" onclick="downloadFont('ComicNeue.ttf')">
                 <span class="tooltip">Download</span>
             </div>
@@ -62,7 +72,7 @@
 
         <!-- Font 2 -->
         <div class="font-item">
-            <p class="font-name">Workbench</p>
+            <p class="font-name" style="font-family: 'Workbench';">Workbench</p>
             <div class="download-icon" onclick="downloadFont('Workbench.ttf')">
                 <span class="tooltip">Download</span>
             </div>
