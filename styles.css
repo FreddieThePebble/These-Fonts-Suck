@@ -1,0 +1,13 @@
+body {
+    background: white;
+}
+
+@font-face {
+    font-family: 'Bleeding Cowboys';
+    src: url('Bleeding Cowboys.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ClairesHandwriting';
+    src: url('ClairesHandwriting.ttf') format('truetype');
+}

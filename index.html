@@ -1,45 +1,57 @@
-<script>
-    function downloadFont(fontFileName) {
-        const downloadLink = document.createElement('a');
-        downloadLink.href = `https://raw.githubusercontent.com/FreddieThePebble/These-Fonts-Suck/main/fonts/${fontFileName}`;
-        downloadLink.download = fontFileName;
-        downloadLink.click();
-    }
+<head>
+    <title>These Fonts Suck</title>
+    <style>
+        /* ADD MORE FONT FILES LIKE THIS - Each one is a different file */
+        @font-face {
+            font-family: 'ArtyTimes';
+            src: url('ArtyTimes.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Bleeding Cowboys';
+            src: url('Bleeding Cowboys.ttf') format('truetype');
+        }
 
-    document.addEventListener("DOMContentLoaded", function () {
+        @font-face {
+            font-family: 'ClairesHandwriting';
+            src: url('ClairesHandwriting.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Brush Script';
+            src: url('Brush Script.ttf') format('truetype');
+        }
+    </style>
+</head>
+<body>
+<h1>These Fonts Suck</h1>
+<p>Click on a font to download it.</p>
+<ul class="font-list">
+
+</ul>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
         const fontNames = [
             'Arial.ttf', 'ArtyTimes.ttf', 'Bleeding Cowboys.ttf', 'Brush Script.ttf',
-            'Claire\'s Handwriting.ttf', 'Comic Sans.ttf', 'ComicNeue.ttf', 'CourierPrime.ttf',
+            'ClairesHandwriting.ttf', 'Comic Sans.ttf', 'ComicNeue.ttf', 'CourierPrime.ttf',
             'Curlz.ttf', 'Interstellar Log.ttf', 'Meccano CmInkb.ttf', 'Neuland.ttf',
             'Papyrus.ttf', 'Poster Slab.ttf', 'Souvenir.ttf', 'Trajan.ttf', 'Workbench.ttf',
             'ecofont.ttf', 'helvetica.ttf'
-        ];
+        ]
 
-        const fontList = document.querySelector('.font-list');
+        const fontList = document.querySelector('.font-list')
 
         fontNames.forEach(fontName => {
-            const li = document.createElement('li');
-            li.className = 'font-item';
+            const li = document.createElement('li')
+            li.className = 'font-item'
 
-            const downloadIcon = document.createElement('div');
-            downloadIcon.className = 'download-icon';
-            downloadIcon.onclick = () => downloadFont(fontName);
+            const fontParagraph = document.createElement('p')
+            fontParagraph.className = 'font-name'
+            fontParagraph.style.fontFamily = `'${fontName.replace('.ttf', '')}'`
+            fontParagraph.textContent = fontName.replace('.ttf', '')
 
-            const tooltip = document.createElement('span');
-            tooltip.className = 'tooltip';
-            tooltip.textContent = 'Download';
+            li.appendChild(fontParagraph)
 
-            downloadIcon.appendChild(tooltip);
-
-            const fontParagraph = document.createElement('p');
-            fontParagraph.className = 'font-name';
-            fontParagraph.style.fontFamily = `'${fontName.replace('.ttf', '')}'`;
-            fontParagraph.textContent = fontName.replace('.ttf', '');
-
-            li.appendChild(downloadIcon);
-            li.appendChild(fontParagraph);
-
-            fontList.appendChild(li);
-        });
-    });
+            fontList.appendChild(li)
+        })
+    })
 </script>
+</body>
